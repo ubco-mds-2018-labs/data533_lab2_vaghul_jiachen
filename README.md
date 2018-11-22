@@ -2,14 +2,14 @@
 Submission repository for DATA-533 Lab 2
 
 Group Members:-
-* Vaghul Aditya Balaji - 10796456
-* Jiachen Wei - 11154549
+* Vaghul Aditya Balaji
+* Jiachen Wei
 
-Package: *xuebadb*
-Sub-packages: *dbgeneric* and *dfanalysis*
+Package: *xuebadb*  
+Sub-packages: *dbgeneric* and *dfanalysis*  
 
-**dbgeneric:-**
-Modules:-
+**dbgeneric:-**  
+Modules:-  
 * *odbc_interface* - This module is responsible for connecting to and querying from a Microsoft SQL Server DB using the ODBC driver and pyodbc module. This module has a class ODBCInterface which contains the following methods:-
   * *\_\_init\_\_*: This takes the server name, username, password and database name and stores it in class instance attributes
   * *\_\_connect*: This is a private method that creates the connection using the class attributes which we stored in the constructor. It makes use of pyodbc module.
