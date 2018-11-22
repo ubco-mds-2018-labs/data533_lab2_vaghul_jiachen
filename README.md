@@ -26,12 +26,12 @@ Python packages:-
 **Package structure:-**
 
 xuebadb --> package  
- -- dbgeneric --> sub-package  
-    -- db_interface --> module   
-    -- mysql_interface -->module  
-    -- odbc_interface --> module  
- -- dfanalysis --> sub-package
-     -- cleanup --> module
-     -- stats --> module
+&nbsp;&nbsp;-- dbgeneric --> sub-package  
+&nbsp;&nbsp;&nbsp;&nbsp;-- db_interface --> module   
+&nbsp;&nbsp;&nbsp;&nbsp;-- mysql_interface -->module  
+&nbsp;&nbsp;&nbsp;&nbsp;-- odbc_interface --> module  
+&nbsp;&nbsp;-- dfanalysis --> sub-package  
+&nbsp;&nbsp;&nbsp;&nbsp;-- cleanup --> module  
+&nbsp;&nbsp;&nbsp;&nbsp;-- stats --> module  
      
 Please use *DATA533_Lab2_Vaghul_Jiachen.py* to test out the package and the functionalities.
