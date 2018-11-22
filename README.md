@@ -1,7 +1,7 @@
 # data533_lab2_vaghul_jiachen
 Submission repository for DATA-533 Lab 2
 
-Group Members:-
+Group Members:
 * Vaghul Aditya Balaji
 * Jiachen Wei
 
@@ -9,7 +9,7 @@ Group Members:-
 
 ---
 
-**Requirements:-**  
+**Requirements:**  
 In order to be able to use the package, you would have to install the following:-
 
 Python packages:-
@@ -23,7 +23,7 @@ Python packages:-
 
 ---
 
-**Package structure:-**
+**Package structure:**
 
 xuebadb --> package  
 &nbsp;&nbsp;-- dbgeneric --> sub-package  
