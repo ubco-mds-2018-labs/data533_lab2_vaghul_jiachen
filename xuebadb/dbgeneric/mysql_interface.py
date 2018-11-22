@@ -11,22 +11,22 @@ class MySQLInterface:
     def __connect(self):        
         try:
             self.cnx = mysql.connector.connect(user=self.username, password=self.password, host=self.server, database=self.dbname)
+            return True
         except mysql.connector.Error as err:
             print(err)
-            self.cnx.close()
+            return False
             
     def select(self, query):
-        try:
-            self.__connect()
-            output = []
-            cursor = self.cnx.cursor()
-            cursor.execute(query)
-            for row in cursor:
-                output.append(row)
-            cursor.close()
-            return pd.DataFrame(output)
-        except:
-            print("Unable to run the SELECT query")
-        finally:
-            self.cnx.close()
-            
+        if(not self.__connect()):
+            return None
+        output = []
+        cursor = self.cnx.cursor()
+        cursor.execute(query)
+        for row in cursor:
+            inner_list = []
+            for val in row:
+                inner_list.append(str(val).strip())
+            output.append(inner_list)
+        cursor.close()
+        self.cnx.close()
+        return pd.DataFrame(output)

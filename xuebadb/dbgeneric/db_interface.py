@@ -1,18 +1,30 @@
-from mysql_interface import MySQLInterface
-from odbc_interface import ODBCInterface
-class DBInterface(ODBCInterface, MySQLInterface):   #inherit
-    def __init__(self,dbtype,server,username,password,dbname):
-        dbtypelist=['sql_server','mysql']
-        if dbtype not in dbtypelist:
-            raise Exception("The argument \'dbtype\' must be in the list {}".format(dbtypelist) )
-        if dbtype=='sql_server':
-            ODBCInterface.__init__(self,server,username,password,dbname)
-            self.dbtype = dbtype
-        elif dbtype=='mysql':
+try:
+    from mysql_interface import MySQLInterface
+    from odbc_interface import ODBCInterface
+except ImportError:
+    from .mysql_interface import MySQLInterface
+    from .odbc_interface import ODBCInterface
+
+# Generic class that calls the appropriate DB class based on user's input
+class DBInterface(ODBCInterface, MySQLInterface):
+    dbtypelist = ['sql_server', 'mysql']
+    
+    def __init__(self, dbtype, server, username, password, dbname):
+        if dbtype not in DBInterface.dbtypelist:
+            raise Exception("DB type not supported. Ensure it's one of the following - {}".format(DBInterface.dbtypelist))
+            
+        self.dbtype = dbtype
+        # for MySQL
+        if self.dbtype == DBInterface.dbtypelist[0]:
+            ODBCInterface.__init__(self, server, username, password, dbname)
+        # for SQL Server
+        elif self.dbtype == DBInterface.dbtypelist[1]:
             MySQLInterface.__init__(self, server, username, password, dbname)
-            self.dbtype = dbtype
-    def querySelect(self,query):
-        if self.dbtype=='sql_server':
-            ODBCInterface.select(self,query)
-        if self.dbtype=='mysql':
-            MySQLInterface.select(self,query)
+            
+    def querySelect(self, query):
+        # for MySQL
+        if self.dbtype == DBInterface.dbtypelist[0]:
+            return ODBCInterface.select(self, query)
+        # for SQL Server
+        elif self.dbtype == DBInterface.dbtypelist[1]:
+            return MySQLInterface.select(self, query)

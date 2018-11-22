@@ -1,12 +1,14 @@
-import xuebadb.dbgeneric.mysql_interface as mysql
-import xuebadb.dbgeneric.odbc_interface as odbc
+import xuebadb.dbgeneric.db_interface as dbintfc
 import xuebadb.dfanalysis.cleanup as cleanup
 
-mysql_con = mysql.MySQLInterface('cosc304.ok.ubc.ca', 'vbalaji', '10796456', 'WorksOn')
-mysql_res = mysql_con.select("select * from dept")
+# Testing out connectivity to a MySQL DB server using the package
+res_con = dbintfc.DBInterface('mysql', 'cosc304.ok.ubc.ca', 'vbalaji', '10796456', 'WorksOn')
+res_df = res_con.querySelect("select * from dept")
+cleanup.show_nulls(res_df)
+print(res_df)
 
-odbc_con = odbc.ODBCInterface("sql04.ok.ubc.ca", "rlawrenc", "test", "workson")
-odbc_res = odbc_con.select("select * from dept")
-
-cleanup.show_nulls(odbc_res)
-print(odbc_res)
+# Testing out connectivity to a SQL server DB using the package
+res_con = dbintfc.DBInterface('sql_server', 'sql04.ok.ubc.ca', 'rlawrenc', 'test', 'workson')
+res_df = res_con.querySelect("select * from emp")
+cleanup.show_nulls(res_df)
+print(res_df)
