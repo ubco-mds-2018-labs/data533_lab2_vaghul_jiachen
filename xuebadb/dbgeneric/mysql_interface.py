@@ -1,4 +1,5 @@
 import mysql.connector
+import pandas as pd
 
 class MySQLInterface:    
     def __init__(self, server, username, password, dbname):
@@ -23,7 +24,7 @@ class MySQLInterface:
             for row in cursor:
                 output.append(row)
             cursor.close()
-            return output
+            return pd.DataFrame(output)
         except:
             print("Unable to run the SELECT query")
         finally:
