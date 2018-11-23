@@ -10,7 +10,7 @@ Group Members:
 ---
 
 **Requirements:**  
-In order to be able to use the package, you would have to install the following:-
+In order to be able to use the package, you would have to install the following:
 
 Python packages:
 * pyodbc
