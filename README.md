@@ -35,3 +35,5 @@ xuebadb --> package
 &nbsp;&nbsp;&nbsp;&nbsp;-- stats --> module  
      
 Please use *DATA533_Lab2_Vaghul_Jiachen.py* to test out the package and the functionalities.
+
+***NOTE:*** Since we are using UBC's databases for testing purposes, you would have to use the UBCO VPN if you are trying to run this code outside campus.
