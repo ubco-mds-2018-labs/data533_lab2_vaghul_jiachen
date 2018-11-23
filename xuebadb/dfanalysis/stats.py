@@ -1,15 +1,22 @@
-import pandas
+import seaborn as sns
 import matplotlib.pyplot as plt
+
 def dfSummary(data):
     try:
         return data.describe()  #statistical summary
     except:
-        print("Unable to provide statistical summary.",err)
+        print("Unable to provide a statistical summary")
+        
 def colBoxPlot(data):
-    for col in range(0,len(data.columns)):
+    boxplot_inputs = []
+    for col in range(0, len(data.columns)):
         try:
-            floatdata=data[col].astype(float) #try to convert each column to float and create box plot
+            floatdata = data[col].astype(float) #converting each column to float
+            boxplot_inputs.append((col, floatdata))
         except ValueError as err:
-            print("Unable to create box plot for column",col,'\t',err)     
-        else:
-            floatdata.plot.box()
+            print(f"Unable to create box plot for column [{col}]. Error: [{err}]")
+            
+    for data in boxplot_inputs:
+        box_plot = sns.boxplot(data[1], orient = "v", linewidth = 2.5)
+        box_plot.set(xlabel = f"Column [{data[0]}]", ylabel = "Values")
+        plt.show()
