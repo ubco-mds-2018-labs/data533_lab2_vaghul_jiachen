@@ -14,4 +14,4 @@ Sub-packages: *dbgeneric* and *dfanalysis*
   
 **Sub-package: `dfanalysis`**  
 * Module: `cleanup` This module contains the following method to display the missing values:
-  * `show_nulls` displays the data sparsity matrix to see missing values. It replaces with None values in the pandas dataframe with numpy NaN values, and display the sparsity matrix using missingno and matplotlib.pyplot. 
+  * `show_nulls` displays the data sparsity matrix to see missing values. It replaces with None values in the pandas dataframe with numpy NaN values, and display the sparsity matrix using the missingno and matplotlib.pyplot modules. 
